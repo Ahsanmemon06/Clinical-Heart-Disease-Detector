@@ -1,6 +1,6 @@
 # 🫀 Heart Disease Risk Prediction Web App
 
-An end-to-end clinical machine learning web application built with **Flask**, **Scikit-Learn**, and **Joblib** to assess coronary heart disease risk. The pipeline uses an optimized Support Vector Machine (RBF Kernel) with custom decision threshold calibration to maximize clinical sensitivity (Recall) and minimize missed diagnoses (False Negatives)[cite: 1, 3].
+An end-to-end clinical machine learning web application built with **Flask**, **Scikit-Learn**, and **Joblib** to assess coronary heart disease risk. The pipeline uses an optimized Support Vector Machine (RBF Kernel) with custom decision threshold calibration to maximize clinical sensitivity (Recall) and minimize missed diagnoses (False Negatives).
 
 ---
 
@@ -11,7 +11,7 @@ In healthcare diagnostics, particularly cardiology, the cost of a **False Negati
 This project:
 1. Preprocesses clinical tabular data using an automated `ColumnTransformer` (StandardScaler + OneHotEncoder).
 2. Benchmarks multiple classifiers (Logistic Regression, KNN, Decision Trees, Random Forest, XGBoost, and SVM).
-3. Tunes an **RBF Support Vector Machine (SVM)** with `class_weight='balanced'` and lowers the decision threshold to **0.28**[cite: 1, 3].
+3. Tunes an **RBF Support Vector Machine (SVM)** with `class_weight='balanced'` and lowers the decision threshold to **0.28**.
 4. Deploys the full pipeline via a responsive, medical-grade Flask web dashboard.
 
 ---
@@ -23,24 +23,24 @@ All models were evaluated on an identical test split ($N = 54$; Class 0: 33, Cla
 | Model | Accuracy | Class 1 Precision | Class 1 Recall (Sensitivity) | Class 1 F1-Score | False Negatives (Missed) |
 | :--- | :---: | :---: | :---: | :---: | :---: |
 | **Default Logistic Regression** | 87% | 100% | 67% | 0.80 | 7 |
-| **KNN (k=5)** | 85% | 93% | 67% | 0.78[cite: 1] | 7 |
-| **Decision Tree (depth=4)**[cite: 1] | 83%[cite: 1] | 93%[cite: 1] | 62%[cite: 1] | 0.74[cite: 1] | 8 |
-| **Random Forest (Default)**[cite: 1] | 81%[cite: 1] | 87%[cite: 1] | 62%[cite: 1] | 0.72[cite: 1] | 8 |
-| **Tuned Random Forest**[cite: 1] | 87%[cite: 1] | 94%[cite: 1] | 71%[cite: 1] | 0.81[cite: 1] | 6 |
-| **XGBoost**[cite: 1] | 87%[cite: 1] | 94%[cite: 1] | 71%[cite: 1] | 0.81[cite: 1] | 6 |
-| **Default SVM (threshold=0.5)**[cite: 1] | 87%[cite: 1] | 89%[cite: 1] | 76%[cite: 1] | 0.82[cite: 1] | 5[cite: 1] |
-| **🎯 Tuned SVM (threshold=0.28)**[cite: 3] | **80%** | **67%** | **85.7% (18/21)**[cite: 3] | **0.75** | **3 (Lowest)**[cite: 3] |
+| **KNN (k=5)** | 85% | 93% | 67% | 0.78 | 7 |
+| **Decision Tree (depth=4)** | 83% | 93% | 62% | 0.74 | 8 |
+| **Random Forest (Default)** | 81% | 87% | 62% | 0.72 | 8 |
+| **Tuned Random Forest** | 87% | 94% | 71% | 0.81 | 6 |
+| **XGBoost** | 87% | 94% | 71% | 0.81 | 6 |
+| **Default SVM (threshold=0.5)** | 87% | 89% | 76% | 0.82 | 5 |
+| **🎯 Tuned SVM (threshold=0.28)** | **80%** | **67%** | **85.7% (18/21)** | **0.75** | **3 (Lowest)** |
 
 ### 🔍 Key Clinical Takeaway
-By calibrating the decision threshold to **0.28**, the model captured **18 out of 21 diseased patients** (dropping missed diagnoses from 5 to 3)[cite: 1, 3]. In clinical screening, trading marginal precision for higher sensitivity is vital to patient safety.
+By calibrating the decision threshold to **0.28**, the model captured **18 out of 21 diseased patients** (dropping missed diagnoses from 5 to 3). In clinical screening, trading marginal precision for higher sensitivity is vital to patient safety.
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Core:** Python 3.10+
-- **Machine Learning:** Scikit-Learn, XGBoost, NumPy, Pandas[cite: 1]
-- **Model Serialization:** Joblib[cite: 1]
+- **Machine Learning:** Scikit-Learn, XGBoost, NumPy, Pandas
+- **Model Serialization:** Joblib
 - **Web Framework:** Flask, Jinja2
 - **Frontend:** HTML5, CSS3, FontAwesome
 
@@ -63,6 +63,7 @@ By calibrating the decision threshold to **0.28**, the model captured **18 out o
     └── images/
         └── heart.jpg            # Anatomical illustration
 
+        
 ⚙️ Installation & Local Setup
 1. Clone the repository:
 git clone [https://github.com/Ahsanmemon06/Heart-Disease-Prediction-Flask.git](https://github.com/Ahsanmemon06/Heart-Disease-Prediction-Flask.git)
