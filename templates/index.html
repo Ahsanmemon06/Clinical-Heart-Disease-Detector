@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3.0">
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- Top Title Header -->
+        <header class="hero-header">
+            <div class="badge-pill">
+                <i class="fa-solid fa-heart-pulse"></i> Clinical AI Tool
+            </div>
+            <h1>Heart Disease Prediction</h1>
+            <div class="tagline-box">
+                <span>using machine learning algorithms</span>
+            </div>
+        </header>
+
+        <!-- Main Workspace: Split Container -->
+        <main class="dashboard-card">
+            
+            <!-- LEFT COLUMN: Input Clinical Form -->
+            <section class="form-container">
+                <div class="card-heading">
+                    <i class="fa-solid fa-notes-medical"></i>
+                    <h2>Patient Clinical Metrics</h2>
+                </div>
+
+                <form action="/" method="POST" class="clinical-form">
+                    <div class="grid-fields">
+                        
+                        <div class="input-block">
+                            <label for="age">Age (Years)</label>
+                            <input type="number" id="age" name="age" placeholder="e.g. 55" min="1" max="120" required>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="sex">Gender</label>
+                            <select id="sex" name="sex" required>
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="chest_pain_type">Chest Pain Type</label>
+                            <select id="chest_pain_type" name="chest_pain_type" required>
+                                <option value="" disabled selected>Select Type</option>
+                                <option value="1">Typical Angina (1)</option>
+                                <option value="2">Atypical Angina (2)</option>
+                                <option value="3">Non-anginal Pain (3)</option>
+                                <option value="4">Asymptomatic (4)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="resting_blood_pressure">Resting Blood Pressure (mm Hg)</label>
+                            <input type="number" id="resting_blood_pressure" name="resting_blood_pressure" placeholder="e.g. 130" required>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="serum_cholestoral">Serum Cholesterol (mg/dl)</label>
+                            <input type="number" id="serum_cholestoral" name="serum_cholestoral" placeholder="e.g. 240" required>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="fasting_blood_sugar">Fasting Blood Sugar > 120 mg/dl</label>
+                            <select id="fasting_blood_sugar" name="fasting_blood_sugar" required>
+                                <option value="" disabled selected>Select Level</option>
+                                <option value="0">No (&le; 120 mg/dl)</option>
+                                <option value="1">Yes (&gt; 120 mg/dl)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="resting_electrocardiographic_results">Resting ECG Results</label>
+                            <select id="resting_electrocardiographic_results" name="resting_electrocardiographic_results" required>
+                                <option value="" disabled selected>Select Result</option>
+                                <option value="0">Normal (0)</option>
+                                <option value="1">ST-T Wave Abnormality (1)</option>
+                                <option value="2">Left Ventricular Hypertrophy (2)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="max_heart_rate">Max Heart Rate Achieved</label>
+                            <input type="number" id="max_heart_rate" name="max_heart_rate" placeholder="e.g. 150" required>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="exercise_induced_angina">Exercise Induced Angina</label>
+                            <select id="exercise_induced_angina" name="exercise_induced_angina" required>
+                                <option value="" disabled selected>Select Option</option>
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="oldpeak">ST Depression (Oldpeak)</label>
+                            <input type="number" step="0.1" id="oldpeak" name="oldpeak" placeholder="e.g. 1.5" required>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="st_segment">Peak Exercise ST Segment</label>
+                            <select id="st_segment" name="st_segment" required>
+                                <option value="" disabled selected>Select Slope</option>
+                                <option value="1">Upsloping (1)</option>
+                                <option value="2">Flat (2)</option>
+                                <option value="3">Downsloping (3)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="major_vessels">Number of Major Vessels (0-3)</label>
+                            <select id="major_vessels" name="major_vessels" required>
+                                <option value="" disabled selected>Select Count</option>
+                                <option value="0">0 Vessels</option>
+                                <option value="1">1 Vessel</option>
+                                <option value="2">2 Vessels</option>
+                                <option value="3">3 Vessels</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block span-two">
+                            <label for="thal">Thalassemia (Thal)</label>
+                            <select id="thal" name="thal" required>
+                                <option value="" disabled selected>Select Thalassemia Status</option>
+                                <option value="3">Normal (3)</option>
+                                <option value="6">Fixed Defect (6)</option>
+                                <option value="7">Reversible Defect (7)</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="action-submit-btn">
+                        <span>Execute Risk Prediction</span>
+                        <i class="fa-solid fa-angles-right"></i>
+                    </button>
+                </form>
+            </section>
+
+            <!-- RIGHT COLUMN: Clean Medical Image Frame & Result Display -->
+            <aside class="media-container">
+                
+                {% if prediction %}
+                <div class="status-box {{ alert_type }}">
+                    <div class="status-top">
+                        <i class="fa-solid {% if alert_type == 'danger' %}fa-triangle-exclamation{% else %}fa-circle-check{% endif %}"></i>
+                        <h3>Clinical Assessment</h3>
+                    </div>
+                    <p class="status-message">{{ prediction }}</p>
+                    {% if probability is not none %}
+                    <div class="metric-meter">
+                        <div class="meter-text">
+                            <span>Calculated Risk Probability</span>
+                            <strong>{{ probability }}%</strong>
+                        </div>
+                        <div class="meter-bar">
+                            <span class="meter-fill" style="width: {{ probability }}%;"></span>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Image container with only clean picture (text/badge removed) -->
+                <div class="visual-frame">
+                    <img src="{{ url_for('static', filename='images/heart.jpg') }}" alt="Human Heart Anatomy">
+                </div>
+
+            </aside>
+
+        </main>
+    </div>
+
+</body>
+</html>
